@@ -1,231 +1,202 @@
-import React from "react";
+'use client'
+import React, { useRef } from "react";
 
-// SEO Metadata for About page
-export const metadata = {
-  title: "About Us | ZivaQ Pharmaceutical Inc. - Leading Global Pharmaceutical Company",
-  description: "Learn about ZivaQ Pharmaceutical Inc., a US-based pharmaceutical company committed to delivering high-quality, affordable, and innovative healthcare solutions globally. WHO-GMP certified.",
-  keywords: [
-    "about ZivaQ Pharmaceutical",
-    "pharmaceutical company USA",
-    "WHO-GMP certified",
-    "healthcare solutions",
-    "pharmaceutical manufacturing",
-    "East Brunswick pharmaceutical",
-    "global pharmaceutical company",
-    "FDA compliant medicines",
-    "pharmaceutical innovation",
-    "generic medicines",
-    "nutraceuticals",
-    "pharmaceutical quality",
-    "healthcare accessibility",
-    "pharmaceutical values",
-    "medical expertise"
-  ],
-  openGraph: {
-    title: "About ZivaQ Pharmaceutical Inc.",
-    description: "Leading US-based pharmaceutical company delivering innovative healthcare solutions globally.",
-    url: "https://zivaqpharma.com/about",
-  },
-};
+const page = () => {
+  const formRef = useRef(null);
+  const [sent, setSent] = React.useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = formRef.current;
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      date: form.date.value,
+      service: form.service.value,
+    };
+    // You can replace this with an API call or other logic
+    console.log("Appointment submitted:", data);
+    setSent(true);
+    form.reset();
+    setTimeout(() => setSent(false), 3000);
+  };
 
-const AboutUs = () => {
-  const coreValues = [
-    {
-      icon: "💡",
-      title: "Innovation",
-      description: "We embrace science and technology to develop next-generation healthcare solutions."
-    },
-    {
-      icon: "🤝",
-      title: "Integrity", 
-      description: "We operate with honesty, transparency, and ethical responsibility."
-    },
-    {
-      icon: "⭐",
-      title: "Quality",
-      description: "We follow strict USFDA, WHO-GMP, and ISO-certified protocols."
-    },
-    {
-      icon: "🌍",
-      title: "Global Impact",
-      description: "We work towards expanding access to essential medicines for all."
-    }
-  ];
-
-  const whatWeDo = [
-    {
-      title: "Innovative Formulations",
-      description: "Creating advanced drug delivery systems for better patient compliance.",
-      icon: "🔬"
-    },
-    {
-      title: "Generic Medicines", 
-      description: "Offering cost-effective alternatives without compromising on quality.",
-      icon: "💊"
-    },
-    {
-      title: "Nutraceuticals",
-      description: "Promoting preventive healthcare and overall wellness.",
-      icon: "🌱"
-    }
-  ];
-
+  const features = [
+            {
+              number: '01',
+              title: 'Commitment to Results',
+              desc: 'We prioritize integrity, professionalism, and excellence to achieve outcomes that protect your interests.'
+            },
+            {
+              number: '02',
+              title: 'Client-First Approach',
+              desc: 'Your concerns are our priority, ensuring personalized strategies and clear communication every step of the way.'
+            },
+            {
+              number: '03',
+              title: 'Comprehensive Legal Services',
+              desc: 'From complex cases to routine matters, we provide seamless, end-to-end legal support under one roof.'
+            },
+          ];
   return (
-    <>
-      
-      <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 py-20 lg:py-32">
-          <div className="absolute inset-0 bg-black opacity-20"></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center text-white max-w-4xl mx-auto">
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6">About ZivaQ Pharmaceutical</h1>
-              <p className="text-xl lg:text-2xl font-light leading-relaxed">
-                Committed to delivering high-quality, affordable, and innovative healthcare solutions across the globe
+    <div>
+      <section className="flex items-center justify-center min-h-[60vh] py-12 px-4 md:px-8 ">
+        <div className="w-full max-w-4xl mx-auto rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+          <div className="bg-[#1a3c4b] flex flex-col justify-center items-start p-8 md:p-12 md:w-1/2 text-white">
+            <div className="mb-4">
+              <span className="inline-block bg-white/20 px-4 py-2 rounded-lg text-lg md:text-xl font-bold tracking-wide">
+                7+ Years Experience
+              </span>
+            </div>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mb-2">
+              We Provide Reliable
+              <br />
+              And Effective Legal Services
+            </h2>
+          </div>
+          <div className="bg-white/60 backdrop-blur p-8 md:p-12 flex flex-col justify-center md:w-1/2">
+            <span className="uppercase tracking-widest text-[#3b5c6b] text-xs md:text-sm font-semibold mb-2">
+              About Us
+            </span>
+            <p className="text-gray-700 text-base md:text-lg">
+              UMV Legal &amp; Associates stands as a trusted name in the legal
+              industry, backed by over 7 years of experience delivering expert
+              solutions. We are dedicated to providing clear, reliable, and
+              results-driven legal services tailored to your needs. Experience
+              professionalism and excellence with every step we take together.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="py-16 px-4 md:px-0 flex flex-col items-center">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white text-center mb-10">
+          Why to choose us
+        </h2>
+        
+            <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row gap-8 md:gap-6">
+              {features.map((feature, idx) => (
+                <div key={feature.number} className="flex-1 flex flex-col items-center text-center bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-8">
+                  <span
+                    className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#295c8a] to-[#b6e2e0] mb-4 select-none"
+                    style={{ WebkitTextStroke: '2px #295c8a' }}
+                  >
+                    {feature.number}
+                  </span>
+                  <span className="font-bold text-lg md:text-xl text-gray-800 mb-2">{feature.title}</span>
+                  <p className="text-gray-600 text-base md:text-lg">{feature.desc}</p>
+                </div>
+              ))}
+            </div>
+      </section>
+      <section className="relative w-full flex flex-col items-center justify-center py-20">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-white text-center mb-8 tracking-wide uppercase">Appointment</h2>
+        <div className="w-full flex justify-center items-center">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="bg-white/60 backdrop-blur rounded-xl shadow-2xl px-8 py-10 w-full max-w-md flex flex-col gap-5"
+          >
+            <h3 className="text-white text-xl font-bold text-center mb-2">Get An Appointment</h3>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              className="rounded-md px-4 py-2 bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#295c8a]"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              className="rounded-md px-4 py-2 bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#295c8a]"
+              required
+            />
+            <input
+              type="date"
+              name="date"
+              placeholder="dd/mm/yyyy"
+              className="rounded-md px-4 py-2 bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#295c8a]"
+              required
+            />
+            <select
+              name="service"
+              className="rounded-md px-4 py-2 bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#295c8a]"
+              required
+            >
+              <option value="">Select A Service</option>
+              <option value="consultation">Consultation</option>
+              <option value="legal-advice">Legal Advice</option>
+              <option value="documentation">Documentation</option>
+              <option value="patents">Patents</option>
+              <option value="trademarks">Trademarks</option>
+              <option value="copyrights">Copyrights</option>
+              <option value="ip-litigation">IP Litigation</option>
+              <option value="licensing-and-transactions">Licensing and Transactions</option>
+              <option value="ip-portfolio-management">IP Portfolio Management</option>
+              <option value="company-incorporation">Company Incorporation</option>
+            </select>
+            <button
+              type="submit"
+              className={`bg-[#295c8a] hover:bg-[#1a3c4b] text-white font-semibold rounded-md py-2 mt-2 transition-colors duration-200 ${sent ? 'opacity-60 cursor-not-allowed' : ''}`}
+              disabled={sent}
+            >
+              {sent ? 'Sent' : 'Get An Appointment'}
+            </button>
+          </form>
+        </div>
+      </section>
+      <section className="py-16 px-4">
+        <div className="p-4">
+          <div className="bg-white/80 backdrop-blur rounded-2xl shadow-lg p-8 flex flex-col gap-6">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#1a3c4b] tracking-wide uppercase mb-2">About UMV Legal &amp; Associates</h2>
+            <h3 className="text-lg md:text-xl font-semibold italic text-[#295c8a] mb-2">Established in 2021</h3>
+            <p className="text-gray-800 text-base md:text-lg mb-2">
+              At UMV Legal &amp; Associates, we are the guardians of innovation and creativity. With a deep passion for intellectual property rights, we are dedicated to protecting, enhancing, and defending the invaluable assets of our clients. Our firm's reputation is built on a commitment to excellence, a thorough understanding of IP law, and a relentless pursuit of justice. UMV Legal &amp; Associates has emerged as a trusted name in the legal fraternity, delivering superior legal services that cater to the diverse needs of individuals, entrepreneurs, and businesses alike. With an unwavering commitment to excellence, we combine deep legal expertise with a client-centric approach to provide practical and result-driven solutions.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex-1 bg-white rounded-xl shadow p-5">
+                <h4 className="text-md md:text-lg font-bold mb-1 text-[#295c8a] uppercase">Our Mission</h4>
+                <p className="text-gray-700 text-sm md:text-base">
+                  Our mission is to provide unwavering support and exceptional legal counsel to clients who value the power of their ideas. We are here to secure your innovations, safeguard your brands, and preserve your creative works. We believe that innovation should be celebrated and that creativity should be protected, and we make it our mission to turn those beliefs into actions.
+                </p>
+              </div>
+              <div className="flex-1 bg-white rounded-xl shadow p-5">
+                <h4 className="text-md md:text-lg font-bold mb-1 text-[#295c8a] uppercase">Our Commitment</h4>
+                <p className="text-gray-700 text-sm md:text-base">
+                  At UMV Legal &amp; Associates, our mission is to protect your rights, preserve your interests, and propel your success. We understand that each client’s legal needs are unique, and we pride ourselves on delivering solutions that are tailored, effective, and practical.
+                </p>
+              </div>
+            </div>
+            <div className="mt-4">
+              <h3 className="text-lg md:text-xl font-bold italic mb-1 text-[#295c8a]">Specialization in Intellectual Property Law</h3>
+              <p className="text-gray-800 text-base md:text-lg mb-4">
+                UMV Legal &amp; Associates is at the forefront of intellectual property law, offering a comprehensive suite of services designed to protect and enhance the value of your creations and innovations. Our intellectual property services include:
               </p>
             </div>
-          </div>
-        </div>
-
-        {/* Main About Section */}
-        <div className="container mx-auto px-4 py-16">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-              <div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-primary-800 mb-6">Who We Are</h2>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  ZivaQ Pharmaceutical Inc. is a US-based pharmaceutical company committed to delivering high-quality, affordable, and innovative healthcare solutions across the globe. Headquartered at One Tower Center Blvd, Suite 1510, East Brunswick, New Jersey, we specialize in the development, manufacturing, and distribution of a broad portfolio of pharmaceutical formulations across key therapeutic areas.
-                </p>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  At ZivaQ, our foundation is built on integrity, science, and a deep commitment to patient well-being. We operate with global standards of compliance, including cGMP, WHO-GMP, and regulatory protocols in all our processes—from research and manufacturing to packaging and distribution.
-                </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  With a strong presence in the United States and emerging global markets, ZivaQ combines modern technology with medical expertise to create products that improve lives.
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-white rounded-xl shadow p-5 flex flex-col items-start">
+                <h4 className="text-lg md:text-xl font-bold mb-1 text-[#295c8a]">Trademark</h4>
+                <p className="text-gray-700 text-sm md:text-base">
+                  300+ trademarks registered. We help secure your brand identity and ensure legal protection for your business assets.
                 </p>
               </div>
-              <div className="relative">
-                <div className="bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl p-8 h-80 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-3xl text-white">🏢</span>
-                    </div>
-                    <p className="text-primary-800 font-semibold">Est. in New Jersey, USA</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Mission & Vision */}
-            <div className="grid md:grid-cols-2 gap-8 mb-20">
-              <div className="bg-white rounded-2xl shadow-lg p-8 border-l-4 border-primary-500">
-                <h3 className="text-2xl font-bold text-primary-800 mb-4">Our Mission</h3>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  To improve health outcomes by providing innovative, affordable, and high-quality pharmaceutical products globally.
+              <div className="bg-white rounded-xl shadow p-5 flex flex-col items-start">
+                <h4 className="text-lg md:text-xl font-bold mb-1 text-[#295c8a]">Patent</h4>
+                <p className="text-gray-700 text-sm md:text-base">
+                  Comprehensive patent services for inventors and businesses, from drafting to filing and protection against infringement.
                 </p>
               </div>
-              <div className="bg-white rounded-2xl shadow-lg p-8 border-l-4 border-green-500">
-                <h3 className="text-2xl font-bold text-green-800 mb-4">Our Vision</h3>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  To be a leading name in pharmaceuticals, trusted for our science, ethics, and unwavering commitment to patient care.
-                </p>
-              </div>
-            </div>
-
-            {/* What We Do */}
-            <div className="mb-20">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-primary-800 mb-4">What We Do</h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  From research and development to manufacturing and global distribution, ZivaQ is engaged in every stage of the pharmaceutical value chain.
-                </p>
-              </div>
-              
-              <div className="grid md:grid-cols-3 gap-8">
-                {whatWeDo.map((item, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 text-center">
-                    <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl">{item.icon}</span>
-                    </div>
-                    <h3 className="text-xl font-bold text-primary-800 mb-3">{item.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Core Values */}
-            <div className="mb-20">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-primary-800 mb-4">Our Core Values</h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  These fundamental principles guide everything we do and shape our commitment to excellence.
-                </p>
-              </div>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {coreValues.map((value, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center hover:transform hover:scale-105">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl">{value.icon}</span>
-                    </div>
-                    <h3 className="text-lg font-bold text-primary-800 mb-3">{value.title}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{value.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Quality & Compliance */}
-            <div className="bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl shadow-xl p-8 lg:p-12 mb-20">
-              <div className="text-center text-white">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6">Quality & Compliance</h2>
-                <p className="text-lg lg:text-xl leading-relaxed max-w-4xl mx-auto mb-8">
-                  At ZivaQ, quality is non-negotiable. Every product is manufactured in compliance with USFDA, WHO-GMP, and ISO standards, ensuring safety, efficacy, and consistency. Our in-house quality control labs perform rigorous testing, while our regulatory team ensures full compliance with IP, BP, USP, and EP standards.
-                </p>
-                <div className="grid md:grid-cols-4 gap-6 mt-8">
-                  {['USFDA', 'WHO-GMP', 'ISO', 'cGMP'].map((cert, index) => (
-                    <div key={index} className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4">
-                      <p className="font-semibold text-lg">{cert}</p>
-                      <p className="text-sm opacity-90">Certified</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Global Footprint & Future */}
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-primary-800 mb-4">Our Global Footprint</h3>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  With an expanding presence across continents, ZivaQ partners with healthcare providers, distributors, and government health systems to deliver medicines where they are needed the most. Our logistics network ensures timely supply, even in remote markets.
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-green-800 mb-4">Looking Ahead</h3>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  The future of healthcare lies in innovation, and at ZivaQ, we are investing in advanced research, strategic collaborations, and sustainable business practices to address the evolving needs of patients worldwide.
-                </p>
-              </div>
-            </div>
-
-            {/* Call to Action */}
-            <div className="text-center mt-20">
-              <div className="bg-gradient-to-r from-green-500 to-primary-600 text-white rounded-2xl p-8 shadow-xl">
-                <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-                  Driven by Innovation, Guided by Responsibility
-                </h3>
-                <p className="text-lg lg:text-xl mb-6">
-                  We aim to be a globally recognized name in pharmaceuticals—delivering not just medicines, but better health outcomes.
+              <div className="bg-white rounded-xl shadow p-5 flex flex-col items-start">
+                <h4 className="text-lg md:text-xl font-bold mb-1 text-[#295c8a]">Copyright</h4>
+                <p className="text-gray-700 text-sm md:text-base">
+                  Legal protection for original works: art, literature, music, software, and more. Licensing and infringement support.
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 
-export default AboutUs;
+export default page;

@@ -48,5 +48,16 @@ export default function SmoothScrollbarWrapper({ children }) {
     };
   }, []);
 
-  return children;
+  return (
+    <div style={{
+      backgroundImage: 'url(/images/homeAboutSection.jpg)',
+      backgroundAttachment: 'fixed',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: 'calc(100vh - 72px)',
+      width: '100%'
+    }}>
+      {children}
+    </div>
+  );
 }
