@@ -20,7 +20,7 @@ const Header = () => {
   const headerCenterArray = [
     { name: "Home", link: "/" },
     { name: "About Us", link: "/about" },
-    // { name: "Founders", link: "/founders" },
+    { name: "Team", link: "/team" },
     { name: "R&D", link: "/research-and-development"},
     { name: "Career", link: "/careers" },
     { name: "Contact Us", link: "/contact-us" },

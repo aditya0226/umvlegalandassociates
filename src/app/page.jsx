@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Accordion from "../../components/Accordion";
+import { members } from "../../components/TeamMemberCard";
 
 export default function HomePage() {
   // Sample client reviews (replace with dynamic data as needed)
@@ -107,33 +108,6 @@ export default function HomePage() {
       icon: "⚖️",
       title: "Future-Focused Legal Counsel",
       desc: "At UMV Legal & Associates, we not only address present challenges but also help clients plan proactively for long-term legal security and compliance.",
-    },
-  ];
-  const teamMembers = [
-    {
-      name: "Aditya Singh",
-      title: "Founder & IP Attorney",
-      img: "/team/adityaSinghPhoto.jpg",
-    },
-    {
-      name: "Adv. Vikram Gulliya",
-      title: "Litigation Head",
-      img: "/team/vikram.jpg",
-    },
-    {
-      name: "CA Ritu Gupta",
-      title: "CA & Financial Advisor",
-      img: "/team/caritugupta.jpg",
-    },
-    {
-      name: "Renu Sehgal",
-      title: "Chief Advisor- GST",
-      img: "/team/Renu.png",
-    },
-    {
-      name: "Anshika Bhardwaj",
-      title: "Patent Attorney",
-      img: "/team/adityaSinghPhoto.jpg",
     },
   ];
 
@@ -382,12 +356,13 @@ export default function HomePage() {
           OUR TEAM
         </h2>
         <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 justify-items-center">
-          {teamMembers.map((member, idx) => (
+          {members.map((member, idx) => (
+          <Link key={member.id} href={`/team/${member.id}`}>
             <div
               key={idx}
               className="min-h-[350px] relative rounded-2xl shadow-xl border border-blue-100 flex flex-col justify-end w-full max-w-xs overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl group"
               style={{
-                backgroundImage: `url(${member.img})`,
+                backgroundImage: `url(${member.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -399,11 +374,12 @@ export default function HomePage() {
                     {member.name}
                   </div>
                   <div className="text-base text-blue-700 text-center font-medium mb-1">
-                    {member.title}
+                    {member.homeTitle}
                   </div>
                 </div>
               </div>
             </div>
+          </Link>
           ))}
         </div>
       </section>
