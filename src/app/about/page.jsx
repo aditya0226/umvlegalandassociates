@@ -2,24 +2,6 @@
 import React, { useRef } from "react";
 
 const page = () => {
-  const formRef = useRef(null);
-  const [sent, setSent] = React.useState(false);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = formRef.current;
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      date: form.date.value,
-      service: form.service.value,
-    };
-    // You can replace this with an API call or other logic
-    console.log("Appointment submitted:", data);
-    setSent(true);
-    form.reset();
-    setTimeout(() => setSent(false), 3000);
-  };
-
   const features = [
             {
               number: '01',
@@ -37,6 +19,33 @@ const page = () => {
               desc: 'From complex cases to routine matters, we provide seamless, end-to-end legal support under one roof.'
             },
           ];
+           const teamMembers = [
+    {
+      name: "Aditya Singh",
+      title: "Founder & IP Attorney",
+      img: "/team/adityaSinghPhoto.jpg",
+    },
+    {
+      name: "Adv. Vikram Gulliya",
+      title: "Litigation Head",
+      img: "/team/vikram.jpg",
+    },
+    {
+      name: "CA Ritu Gupta",
+      title: "CA & Financial Advisor",
+      img: "/team/caritugupta.jpg",
+    },
+    {
+      name: "Renu Sehgal",
+      title: "Chief Advisor- GST",
+      img: "/team/Renu.png",
+    },
+    {
+      name: "Anshika Bhardwaj",
+      title: "Patent Attorney",
+      img: "/team/adityaSinghPhoto.jpg",
+    },
+  ];
   return (
     <div>
       <section className="flex items-center justify-center min-h-[60vh] py-12 px-4 md:px-8 ">
@@ -87,63 +96,6 @@ const page = () => {
               ))}
             </div>
       </section>
-      <section className="relative w-full flex flex-col items-center justify-center py-20">
-        <h2 className="text-2xl md:text-3xl font-extrabold text-white text-center mb-8 tracking-wide uppercase">Appointment</h2>
-        <div className="w-full flex justify-center items-center">
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="bg-white/60 backdrop-blur rounded-xl shadow-2xl px-8 py-10 w-full max-w-md flex flex-col gap-5"
-          >
-            <h3 className="text-white text-xl font-bold text-center mb-2">Get An Appointment</h3>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              className="rounded-md px-4 py-2 bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#295c8a]"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              className="rounded-md px-4 py-2 bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#295c8a]"
-              required
-            />
-            <input
-              type="date"
-              name="date"
-              placeholder="dd/mm/yyyy"
-              className="rounded-md px-4 py-2 bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#295c8a]"
-              required
-            />
-            <select
-              name="service"
-              className="rounded-md px-4 py-2 bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#295c8a]"
-              required
-            >
-              <option value="">Select A Service</option>
-              <option value="consultation">Consultation</option>
-              <option value="legal-advice">Legal Advice</option>
-              <option value="documentation">Documentation</option>
-              <option value="patents">Patents</option>
-              <option value="trademarks">Trademarks</option>
-              <option value="copyrights">Copyrights</option>
-              <option value="ip-litigation">IP Litigation</option>
-              <option value="licensing-and-transactions">Licensing and Transactions</option>
-              <option value="ip-portfolio-management">IP Portfolio Management</option>
-              <option value="company-incorporation">Company Incorporation</option>
-            </select>
-            <button
-              type="submit"
-              className={`bg-[#295c8a] hover:bg-[#1a3c4b] text-white font-semibold rounded-md py-2 mt-2 transition-colors duration-200 ${sent ? 'opacity-60 cursor-not-allowed' : ''}`}
-              disabled={sent}
-            >
-              {sent ? 'Sent' : 'Get An Appointment'}
-            </button>
-          </form>
-        </div>
-      </section>
       <section className="py-16 px-4">
         <div className="p-4">
           <div className="bg-white/80 backdrop-blur rounded-2xl shadow-lg p-8 flex flex-col gap-6">
@@ -193,6 +145,36 @@ const page = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="w-full py-20 px-4 flex flex-col items-center">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-white">
+          OUR TEAM
+        </h2>
+        <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 justify-items-center">
+          {teamMembers.map((member, idx) => (
+            <div
+              key={idx}
+              className="min-h-[350px] relative rounded-2xl shadow-xl border border-blue-100 flex flex-col justify-end w-full max-w-xs overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl group"
+              style={{
+                backgroundImage: `url(${member.img})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="absolute inset-0 transition-all duration-300"></div>
+              <div className="relative z-10 w-full flex flex-col items-center px-4 pb-6 pt-24">
+                <div className="w-full bg-white/90 rounded-xl p-4 flex flex-col items-center shadow-lg">
+                  <div className="text-lg font-bold text-blue-900 text-center mb-1">
+                    {member.name}
+                  </div>
+                  <div className="text-base text-blue-700 text-center font-medium mb-1">
+                    {member.title}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>
